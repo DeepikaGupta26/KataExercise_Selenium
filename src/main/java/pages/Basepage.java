@@ -2,7 +2,8 @@ package pages;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import resource.GlobalClass;
+import utils.CommonUtils;
+import utils.GlobalClass;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,14 +21,14 @@ public class Basepage {
         }
     }
     /** Below method will load value from property file, intialize browser and open url**/
-    public void Navigate_toFreeCRMURL() throws InterruptedException {
+    public void Navigate_toURL() throws InterruptedException {
         String applicationURL = GlobalClass.prop.getProperty("url");
         String browsernm = GlobalClass.prop.getProperty("browser");
         assigneBrowser(browsernm);
         GlobalClass.driver.get(applicationURL);
         GlobalClass.driver.manage().window().maximize();
-        Thread.sleep(4000);
-
+        Thread.sleep(2000);
+        CommonUtils.scrolldown(GlobalClass.driver);
     }
 
     public void assigneBrowser(String nameofbrowser){
